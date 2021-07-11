@@ -3,7 +3,7 @@
 
 void Player::init() {
     sf::Texture playerTexture;
-    playerTexture.loadFromFile("/assets/layout/Player.png");
+    playerTexture.loadFromFile("./assets/layout/Player.png");
     playerTexture.setSmooth(true);
 
     sf::Sprite playerSprite;

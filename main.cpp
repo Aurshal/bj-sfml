@@ -1,5 +1,5 @@
 #include "game.h"
-
+using namespace std;
 
 sf::Vector2f viewSize(1024, 768);
 sf::VideoMode vm(viewSize.x, viewSize.y);
@@ -29,6 +29,8 @@ void draw() {
 }
 
 int main() {
+    cout << viewSize.x << endl;
+    cout << viewSize.x << endl;
     // Game g;
     // g.art();
     // g.menu();

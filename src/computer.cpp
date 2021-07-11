@@ -2,7 +2,7 @@
 
 void Computer::init() {
     sf::Texture computerTexture;
-    computerTexture.loadFromFile("/assets/layout/Dealer.png");
+    computerTexture.loadFromFile("./assets/layout/Dealer.png");
     computerTexture.setSmooth(true);
 
     sf::Sprite computerSprite;

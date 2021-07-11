@@ -1,4 +1,5 @@
 #include "game.h"
+// #include "../main.cpp"
 void Game::menu() {
     string usrInp;
     cout << "\nEnter:\n1. 'P' to play\n2. 'R' for Rules\n3. 'H' for Help\n4.'q' to quit\n";
@@ -32,22 +33,22 @@ void Game::menu() {
 
 }
 void Game::init() {
-    hitTexture.loadFromFile("/assets/layout/Hit.png");
+    hitTexture.loadFromFile("./assets/layout/Hit.png");
     hitTexture.setSmooth(true);
 
-    standTexture.loadFromFile("/assets/layout/Stand.png");
+    standTexture.loadFromFile("./assets/layout/Stand.png");
     standTexture.setSmooth(true);
 
-    bidTexture.loadFromFile("/assets/layout/Bid.png");
+    bidTexture.loadFromFile("./assets/layout/Bid.png");
     bidTexture.setSmooth(true);
 
-    c25Texture.loadFromFile("/assets/layout/25.png");
+    c25Texture.loadFromFile("./assets/layout/25.png");
 
-    c50Texture.loadFromFile("/assets/layout/50.png");
+    c50Texture.loadFromFile("./assets/layout/50.png");
 
-    c100Texture.loadFromFile("/assets/layout/100.png");
+    c100Texture.loadFromFile("./assets/layout/100.png");
 
-    c200Texture.loadFromFile("/assets/layout/200.png");
+    c200Texture.loadFromFile("./assets/layout/200.png");
 
 
     hitSprite.setTexture(hitTexture);
@@ -60,13 +61,19 @@ void Game::init() {
 
     c50Sprite.setTexture(c50Texture);
 
-    c100Sprite.setTexture(hitTexture);
+    c100Sprite.setTexture(c100Texture);
 
     c200Sprite.setTexture(c200Texture);
 
-    hitSprite.setPosition(sf::Vector2f(20.f, 100.f));
-    standSprite.setPosition(sf::Vector2f(60.f, 100.f));
-    bidSprite.setPosition(sf::Vector2f(40.f, 70.f));
+
+    hitSprite.setOrigin(hitTexture.getSize().x / 2, hitTexture.getSize().y / 2);
+    hitSprite.setPosition(sf::Vector2f(200.f, 600.f));
+
+    standSprite.setOrigin(standTexture.getSize().x / 2, standTexture.getSize().y / 2);
+    standSprite.setPosition(sf::Vector2f(1024.f - 250.f, 600.f));
+
+    bidSprite.setOrigin(bidTexture.getSize().x / 2, bidTexture.getSize().y / 2);
+    bidSprite.setPosition(sf::Vector2f(1024.0 / 2.f - 40.f, 450.f));
     // hitSprite.setOrigin(m_texture.getSize().x / 2, m_texture.getSize().y / 2);
 
     // Player::setCards();
