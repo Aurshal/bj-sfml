@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.19.8)
+project(blackjack)
+set(SFMLLinkers -lsfml-graphics -lsfml-window -lsfml-system)
+include_directories(include/)
+add_executable(blackjack main.cpp src/player.cpp src/computer.cpp src/cards.cpp src/game.cpp src/art.cpp)
+add_subdirectory(assets/)
+target_link_libraries(blackjack ${SFMLLinkers})
