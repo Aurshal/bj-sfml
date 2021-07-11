@@ -6,10 +6,11 @@
 class Computer : public Cards {
 protected:
     vector <int> computerCards;
-    bool b_computerWin = false;
-    bool b_computerHit = false;
+
 
 public:
+    sf::Texture computerTexture;
+    sf::Sprite computerSprite;
     void init();
     void setCards();
     void showCards(bool hidden = true);

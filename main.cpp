@@ -22,8 +22,18 @@ void update() {
 }
 
 void draw() {
-    window.draw(g.hitSprite);
+    window.draw(g.menuText);
+    window.draw(g.Player::playerSprite);
+    window.draw(g.Computer::computerSprite);
     window.draw(g.bidSprite);
+    window.draw(g.c25Sprite);
+    window.draw(g.c50Sprite);
+    window.draw(g.c100Sprite);
+    window.draw(g.c200Sprite);
+
+
+    // window.clear(sf::Color::Cyan);
+    window.draw(g.hitSprite);
     window.draw(g.standSprite);
     return;
 }

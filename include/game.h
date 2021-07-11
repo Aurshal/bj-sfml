@@ -47,6 +47,13 @@ public:
 
     sf::Sprite c200Sprite;
 
+    sf::Font defaultFont;
+    sf::Text menuText;
+
+    sf::Text headingText;
+
+
+
 public:
     void menu();
     void init();

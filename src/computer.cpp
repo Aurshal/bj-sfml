@@ -1,12 +1,14 @@
 #include "computer.h"
 
 void Computer::init() {
-    sf::Texture computerTexture;
+
     computerTexture.loadFromFile("./assets/layout/Dealer.png");
     computerTexture.setSmooth(true);
 
-    sf::Sprite computerSprite;
     computerSprite.setTexture(computerTexture);
+    computerSprite.setOrigin(computerTexture.getSize().x / 2, computerTexture.getSize().y / 2);
+    computerSprite.setPosition(sf::Vector2f(1024.f - 200.f, 50.f));
+
     setCards();
 }
 

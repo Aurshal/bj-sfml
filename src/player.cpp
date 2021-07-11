@@ -2,12 +2,13 @@
 
 
 void Player::init() {
-    sf::Texture playerTexture;
+
     playerTexture.loadFromFile("./assets/layout/Player.png");
     playerTexture.setSmooth(true);
-
-    sf::Sprite playerSprite;
     playerSprite.setTexture(playerTexture);
+
+    playerSprite.setOrigin(playerTexture.getSize().x / 2, playerTexture.getSize().y / 2);
+    playerSprite.setPosition(sf::Vector2f(200.f, 50.f));
     setCards();
 }
 

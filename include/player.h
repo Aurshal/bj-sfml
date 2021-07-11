@@ -10,10 +10,10 @@ protected:
     int bid;
 
     vector <int> playerCards;
-    bool b_playerWin = false;
-    bool b_playerHit = false;
 
 public:
+    sf::Texture playerTexture;
+    sf::Sprite playerSprite;
     void init();
     void setCards();
     void showCards();

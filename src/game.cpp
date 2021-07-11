@@ -67,14 +67,38 @@ void Game::init() {
 
 
     hitSprite.setOrigin(hitTexture.getSize().x / 2, hitTexture.getSize().y / 2);
-    hitSprite.setPosition(sf::Vector2f(200.f, 600.f));
+    hitSprite.setPosition(sf::Vector2f(200.f, 600.f - 50));
 
     standSprite.setOrigin(standTexture.getSize().x / 2, standTexture.getSize().y / 2);
-    standSprite.setPosition(sf::Vector2f(1024.f - 250.f, 600.f));
+    standSprite.setPosition(sf::Vector2f(1024.f - 250.f, 600.f - 50));
 
     bidSprite.setOrigin(bidTexture.getSize().x / 2, bidTexture.getSize().y / 2);
-    bidSprite.setPosition(sf::Vector2f(1024.0 / 2.f - 40.f, 450.f));
+    bidSprite.setPosition(sf::Vector2f(1024.0 / 2.f - 40.f, 550.f));
+
+    defaultFont.loadFromFile("./assets/fonts/arial.ttf");
+    menuText.setFont(defaultFont);
+    menuText.setString("This is a menu.");
+    menuText.setColor(sf::Color::Black);
+    menuText.setCharacterSize(60);
+
+    menuText.setOrigin(menuText.getLocalBounds().width / 2, menuText.getLocalBounds().height / 2);
+    menuText.setPosition(1024.f / 2.f, 768.f / 2.f);
+
+
+    c25Sprite.setOrigin(c25Texture.getSize().x / 2, c25Texture.getSize().y / 2);
+    c25Sprite.setPosition(sf::Vector2f(1024.f / 2.f - 230, 1024.f - 325.f));
+
+    c50Sprite.setOrigin(c50Texture.getSize().x / 2, c50Texture.getSize().y / 2);
+    c50Sprite.setPosition(sf::Vector2f(1024.f / 2.f - 100, 1024.f - 325.f));
+
+    c100Sprite.setOrigin(c100Texture.getSize().x / 2, c100Texture.getSize().y / 2);
+    c100Sprite.setPosition(sf::Vector2f(1024.f / 2.f + 30, 1024.f - 325.f));
+
+    c200Sprite.setOrigin(c200Texture.getSize().x / 2, c200Texture.getSize().y / 2);
+    c200Sprite.setPosition(sf::Vector2f(1024.f / 2.f + 160, 1024.f - 325.f));
+
     // hitSprite.setOrigin(m_texture.getSize().x / 2, m_texture.getSize().y / 2);
+
 
     // Player::setCards();
     // Computer::setCards();
