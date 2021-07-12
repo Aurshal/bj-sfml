@@ -1,5 +1,6 @@
 #include "game.h"
-// #include "../main.cpp"
+
+Rules r;
 void Game::menu() {
     string usrInp;
     cout << "\nEnter:\n1. 'P' to play\n2. 'R' for Rules\n3. 'H' for Help\n4.'q' to quit\n";
@@ -9,7 +10,7 @@ void Game::menu() {
     else if (usrInp == "R" || usrInp == "r") {
         system("clear");
         Art::art();
-        Rules::showRules();
+        // Rules::getRules();
         menu();
     }
     else if (usrInp == "h" || usrInp == "H") {
@@ -75,14 +76,43 @@ void Game::init() {
     bidSprite.setOrigin(bidTexture.getSize().x / 2, bidTexture.getSize().y / 2);
     bidSprite.setPosition(sf::Vector2f(1024.0 / 2.f - 40.f, 550.f));
 
-    defaultFont.loadFromFile("./assets/fonts/arial.ttf");
-    menuText.setFont(defaultFont);
-    menuText.setString("This is a menu.");
-    menuText.setColor(sf::Color::Black);
-    menuText.setCharacterSize(60);
 
-    menuText.setOrigin(menuText.getLocalBounds().width / 2, menuText.getLocalBounds().height / 2);
-    menuText.setPosition(1024.f / 2.f, 768.f / 2.f);
+
+    defaultFont.loadFromFile("./assets/fonts/arial.ttf");
+
+    menuHeading.setFont(defaultFont);
+    menuHeading.setString("MENU");
+    menuHeading.setColor(sf::Color::Black);
+    menuHeading.setCharacterSize(60);
+
+    menuHeading.setOrigin(menuHeading.getLocalBounds().width / 2, menuHeading.getLocalBounds().height / 2);
+    menuHeading.setPosition(1024.f / 2.f, 150.f);
+
+    playText.setFont(defaultFont);
+    playText.setString("PLAY");
+    playText.setColor(sf::Color::Black);
+    playText.setCharacterSize(30);
+
+    playText.setOrigin(playText.getLocalBounds().width / 2, playText.getLocalBounds().height / 2);
+    playText.setPosition(1024.f / 2.f, 220.f);
+
+    rulesHeading.setFont(defaultFont);
+    rulesHeading.setString("RULES");
+    rulesHeading.setColor(sf::Color::Black);
+    rulesHeading.setCharacterSize(30);
+
+    rulesHeading.setOrigin(rulesHeading.getLocalBounds().width / 2, rulesHeading.getLocalBounds().height / 2);
+    rulesHeading.setPosition(1024.f / 2.f, 260.f);
+
+    rules.setFont(defaultFont);
+    rules.setString(r.getRules());
+    rules.setColor(sf::Color::Black);
+    rules.setCharacterSize(18);
+
+    rules.setOrigin(rules.getLocalBounds().width / 2, rules.getLocalBounds().height / 2);
+    rules.setPosition(1024.f / 2.f, 768.f / 2.f);
+
+
 
 
     c25Sprite.setOrigin(c25Texture.getSize().x / 2, c25Texture.getSize().y / 2);
@@ -224,3 +254,5 @@ void Game::hitOrStandMenu() {
 
     } while (hitOrStand == "H" || hitOrStand == "h");
 }
+
+

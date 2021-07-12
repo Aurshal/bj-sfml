@@ -1,12 +1,4 @@
-#include "game.h"
-using namespace std;
-
-sf::Vector2f viewSize(1024, 768);
-sf::VideoMode vm(viewSize.x, viewSize.y);
-sf::RenderWindow window(vm, "BlackJack", sf::Style::Default);
-
-Game g;
-
+#include "main.h"
 void updateInput() {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -14,33 +6,79 @@ void updateInput() {
             event.type == sf::Event::Closed) {
             window.close();
         }
+
+        if (event.type == sf::Event::MouseButtonPressed) {
+            if (event.mouseButton.button == sf::Mouse::Left) {
+
+                //HIT BUTTON 
+                if ((((sf::Mouse::getPosition(window)).x >= g.hitSprite.getPosition().x - g.hitSprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.hitSprite.getPosition().x + g.hitSprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.hitSprite.getPosition().y - g.hitSprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.hitSprite.getPosition().y + g.hitSprite.getLocalBounds().height / 2.f)))
+                {
+                    std::cout << "Hit button pressed" << std::endl;
+                }
+
+                //STAND BUTTON
+                if ((((sf::Mouse::getPosition(window)).x >= g.standSprite.getPosition().x - g.standSprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.standSprite.getPosition().x + g.standSprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.standSprite.getPosition().y - g.standSprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.standSprite.getPosition().y + g.standSprite.getLocalBounds().height / 2.f)))
+                {
+                    std::cout << "Stand Button pressed" << std::endl;
+                }
+
+                //BID BUTTON
+                if ((((sf::Mouse::getPosition(window)).x >= g.bidSprite.getPosition().x - g.bidSprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.bidSprite.getPosition().x + g.bidSprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.bidSprite.getPosition().y - g.bidSprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.bidSprite.getPosition().y + g.bidSprite.getLocalBounds().height / 2.f)))
+                {
+                    std::cout << "Bid Button pressed" << std::endl;
+                    doBid = true;
+                }
+
+                //PLAY BUTTON
+                if ((((sf::Mouse::getPosition(window)).x >= g.playText.getPosition().x - g.playText.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.playText.getPosition().x + g.playText.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.playText.getPosition().y - g.playText.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.playText.getPosition().y + g.playText.getLocalBounds().height / 2.f)))
+                {
+                    play = true;
+                    std::cout << "Play Button pressed" << std::endl;
+
+                }
+
+                //RULES BUTTON
+                if ((((sf::Mouse::getPosition(window)).x >= g.rulesHeading.getPosition().x - g.rulesHeading.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.rulesHeading.getPosition().x + g.rulesHeading.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.rulesHeading.getPosition().y - g.rulesHeading.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.rulesHeading.getPosition().y + g.rulesHeading.getLocalBounds().height / 2.f)))
+                {
+                    showRules = true;
+                    std::cout << "Rules Button pressed" << std::endl;
+
+                }
+            }
+        }
     }
-    return;
-}
-void update() {
-    return;
 }
 
 void draw() {
-    window.draw(g.menuText);
-    window.draw(g.Player::playerSprite);
-    window.draw(g.Computer::computerSprite);
-    window.draw(g.bidSprite);
-    window.draw(g.c25Sprite);
-    window.draw(g.c50Sprite);
-    window.draw(g.c100Sprite);
-    window.draw(g.c200Sprite);
+    window.draw(g.menuHeading);
+    window.draw(g.playText);
+    window.draw(g.rulesHeading);
+    if (showRules) {
+        window.clear(sf::Color::Cyan);
+        window.draw(g.rules);
+
+    }
+    if (play) {
+        window.clear(sf::Color::Cyan);
+        window.draw(g.Player::playerSprite);
+        window.draw(g.Computer::computerSprite);
+        window.draw(g.bidSprite);
+        if (doBid) {
+            window.draw(g.c25Sprite);
+            window.draw(g.c50Sprite);
+            window.draw(g.c100Sprite);
+            window.draw(g.c200Sprite);
+        }
+
+        // window.clear(sf::Color::Cyan);
+        window.draw(g.hitSprite);
+        window.draw(g.standSprite);
+    }
 
 
-    // window.clear(sf::Color::Cyan);
-    window.draw(g.hitSprite);
-    window.draw(g.standSprite);
     return;
 }
-
 int main() {
-    cout << viewSize.x << endl;
-    cout << viewSize.x << endl;
     // Game g;
     // g.art();
     // g.menu();
@@ -52,7 +90,7 @@ int main() {
         //handle keyboard events
         updateInput();
         //update game objects in the scene
-        sf::Time dt = clock.restart();
+        // sf::Time dt = clock.restart();
         // if (!gameover) {
         //     update(dt.asSeconds());
         // }

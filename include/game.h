@@ -48,9 +48,11 @@ public:
     sf::Sprite c200Sprite;
 
     sf::Font defaultFont;
-    sf::Text menuText;
 
-    sf::Text headingText;
+    sf::Text menuHeading;
+    sf::Text rules;
+    sf::Text rulesHeading;
+    sf::Text playText;
 
 
 
