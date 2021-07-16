@@ -12,3 +12,4 @@ int count = 0;
 bool doBid = false;
 bool play = false;
 bool showRules = false;
+bool coinClick = false;

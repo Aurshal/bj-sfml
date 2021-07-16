@@ -53,6 +53,9 @@ public:
     sf::Text rules;
     sf::Text rulesHeading;
     sf::Text playText;
+    sf::Text availableMoney;
+    sf::Text bidMoney;
+
 
 
 

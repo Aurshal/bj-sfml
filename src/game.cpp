@@ -114,6 +114,24 @@ void Game::init() {
 
 
 
+    availableMoney.setOrigin(availableMoney.getLocalBounds().width / 2, availableMoney.getLocalBounds().height / 2);
+    availableMoney.setPosition(1024.f / 2 - 110.f, 50.f);
+
+    availableMoney.setFont(defaultFont);
+    availableMoney.setString(("Available money: " + std::to_string(money)));
+    availableMoney.setColor(sf::Color::Black);
+    availableMoney.setCharacterSize(18);
+
+    bidMoney.setOrigin(bidMoney.getLocalBounds().width / 2, bidMoney.getLocalBounds().height / 2);
+    bidMoney.setPosition(1024.f / 2 - 110.f, 80.f);
+
+    bidMoney.setFont(defaultFont);
+    bidMoney.setString(("Your bid: " + std::to_string(bid)));
+    bidMoney.setColor(sf::Color::Black);
+    bidMoney.setCharacterSize(18);
+
+
+
 
     c25Sprite.setOrigin(c25Texture.getSize().x / 2, c25Texture.getSize().y / 2);
     c25Sprite.setPosition(sf::Vector2f(1024.f / 2.f - 230, 1024.f - 325.f));

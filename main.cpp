@@ -25,8 +25,11 @@ void updateInput() {
                 //BID BUTTON
                 if ((((sf::Mouse::getPosition(window)).x >= g.bidSprite.getPosition().x - g.bidSprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.bidSprite.getPosition().x + g.bidSprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.bidSprite.getPosition().y - g.bidSprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.bidSprite.getPosition().y + g.bidSprite.getLocalBounds().height / 2.f)))
                 {
-                    std::cout << "Bid Button pressed" << std::endl;
-                    doBid = true;
+                    if (g.bid < g.money) {
+                        std::cout << "Bid Button pressed" << std::endl;
+                        doBid = true;
+                        coinClick = true;
+                    }
                 }
 
                 //PLAY BUTTON
@@ -42,6 +45,71 @@ void updateInput() {
                 {
                     showRules = true;
                     std::cout << "Rules Button pressed" << std::endl;
+
+                }
+
+                //COIN BUTTONS
+                if ((((sf::Mouse::getPosition(window)).x >= g.c50Sprite.getPosition().x - g.c50Sprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.c50Sprite.getPosition().x + g.c50Sprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.c50Sprite.getPosition().y - g.c50Sprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.c50Sprite.getPosition().y + g.c50Sprite.getLocalBounds().height / 2.f)))
+                {
+                    if (g.bid < g.money) {
+                        std::cout << "c50 Button pressed" << std::endl;
+                        if (g.bid < g.money) {
+                            g.bid += 50;
+                            if (g.bid >= g.money)
+                                g.bid = g.money;
+                        }
+
+
+                        std::string upBid = "Your bid: " + std::to_string(g.bid);
+                        g.bidMoney.setString(upBid);
+                    }
+
+                }
+
+                if ((((sf::Mouse::getPosition(window)).x >= g.c100Sprite.getPosition().x - g.c100Sprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.c100Sprite.getPosition().x + g.c100Sprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.c100Sprite.getPosition().y - g.c100Sprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.c100Sprite.getPosition().y + g.c100Sprite.getLocalBounds().height / 2.f)))
+                {
+                    if (g.bid < g.money) {
+                        std::cout << "c100 Button pressed" << std::endl;
+                        if (g.bid < g.money) {
+                            g.bid += 100;
+                            if (g.bid >= g.money)
+                                g.bid = g.money;
+                        }
+                        std::string upBid = "Your bid: " + std::to_string(g.bid);
+                        g.bidMoney.setString(upBid);
+                    }
+
+
+                }
+
+                if ((((sf::Mouse::getPosition(window)).x >= g.c200Sprite.getPosition().x - g.c200Sprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.c200Sprite.getPosition().x + g.c200Sprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.c200Sprite.getPosition().y - g.c200Sprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.c200Sprite.getPosition().y + g.c200Sprite.getLocalBounds().height / 2.f)))
+                {
+                    if (g.bid < g.money) {
+                        std::cout << "c200 Button pressed" << std::endl;
+                        if (g.bid < g.money) {
+                            g.bid += 200;
+                            if (g.bid >= g.money)
+                                g.bid = g.money;
+                        }
+                        std::string upBid = "Your bid: " + std::to_string(g.bid);
+                        g.bidMoney.setString(upBid);
+                    }
+
+
+                }
+
+                if ((((sf::Mouse::getPosition(window)).x >= g.c25Sprite.getPosition().x - g.c25Sprite.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.c25Sprite.getPosition().x + g.c25Sprite.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.c25Sprite.getPosition().y - g.c25Sprite.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.c25Sprite.getPosition().y + g.c25Sprite.getLocalBounds().height / 2.f)))
+                {
+                    if (g.bid < g.money) {
+                        std::cout << "C25 Button pressed" << std::endl;
+                        if (g.bid < g.money) {
+                            g.bid += 25;
+                            if (g.bid >= g.money)
+                                g.bid = g.money;
+                        }
+                        std::string upBid = "Your bid: " + std::to_string(g.bid);
+                        g.bidMoney.setString(upBid);
+                    }
 
                 }
             }
@@ -62,12 +130,18 @@ void draw() {
         window.clear(sf::Color::Cyan);
         window.draw(g.Player::playerSprite);
         window.draw(g.Computer::computerSprite);
-        window.draw(g.bidSprite);
-        if (doBid) {
-            window.draw(g.c25Sprite);
-            window.draw(g.c50Sprite);
-            window.draw(g.c100Sprite);
-            window.draw(g.c200Sprite);
+        window.draw(g.availableMoney);
+
+        window.draw(g.bidMoney);
+        if (g.bid < g.money) {
+            window.draw(g.bidSprite);
+            if (doBid && coinClick) {
+                window.draw(g.c25Sprite);
+                window.draw(g.c50Sprite);
+                window.draw(g.c100Sprite);
+                window.draw(g.c200Sprite);
+                window.draw(g.bidMoney);
+            }
         }
 
         // window.clear(sf::Color::Cyan);
