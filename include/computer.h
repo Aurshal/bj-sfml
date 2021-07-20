@@ -5,10 +5,11 @@
 #include <SFML/Window.hpp>
 class Computer : public Cards {
 protected:
-    vector <int> computerCards;
 
 
 public:
+    vector <sf::Sprite> computerCards;
+
     sf::Texture computerTexture;
     sf::Sprite computerSprite;
     void init();

@@ -35,6 +35,7 @@ void updateInput() {
                 //PLAY BUTTON
                 if ((((sf::Mouse::getPosition(window)).x >= g.playText.getPosition().x - g.playText.getLocalBounds().width / 2.f) && ((sf::Mouse::getPosition(window)).x <= g.playText.getPosition().x + g.playText.getLocalBounds().width / 2.f)) && (((sf::Mouse::getPosition(window)).y >= g.playText.getPosition().y - g.playText.getLocalBounds().height / 2.f) && ((sf::Mouse::getPosition(window)).y <= g.playText.getPosition().y + g.playText.getLocalBounds().height / 2.f)))
                 {
+
                     play = true;
                     std::cout << "Play Button pressed" << std::endl;
 
@@ -131,6 +132,22 @@ void draw() {
         window.draw(g.Player::playerSprite);
         window.draw(g.Computer::computerSprite);
         window.draw(g.availableMoney);
+        float displace = 0.f;
+
+        for (sf::Sprite card : g.Player::playerCards) {
+            card.setPosition(card.getPosition().x + displace, card.getPosition().y);
+            window.draw(card);
+            displace += 50.f;
+        }
+        float displace2 = 0.f;
+        for (int i = 0; i < g.Computer::computerCards.size(); i++) {
+            sf::Sprite c = g.Computer::computerCards[i];
+            c.setPosition(c.getPosition().x + 574.f + displace2, c.getPosition().y);
+            window.draw(c);
+            displace2 += 50.f;
+        }
+
+
 
         window.draw(g.bidMoney);
         if (g.bid < g.money) {

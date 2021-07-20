@@ -9,11 +9,14 @@ class Player : public Cards {
 protected:
     int bid;
 
-    vector <int> playerCards;
 
 public:
+    vector <sf::Sprite> playerCards;
+
     sf::Texture playerTexture;
     sf::Sprite playerSprite;
+    sf::Texture pcardsTexture;
+    sf::Sprite pcardsSprite;
     void init();
     void setCards();
     void showCards();

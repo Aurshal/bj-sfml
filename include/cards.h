@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <SFML/Graphics.hpp>
 using namespace std;
 #include <cstdlib> 
 #include <ctime>
@@ -9,12 +10,12 @@ using namespace std;
 class Cards {
 protected:
     int cards[13] = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
+    sf::Texture cardTexture;
+    sf::Sprite cardSprite;
 public:
     int genRanIndex(int n);
-    int genCards(int n);
-    // void setCards(vector <int>);
-    // void showCards(vector <int>);
-    // int calcCards(vector <int>);
+    sf::Sprite genCards(int n);
+
 };
 
 
